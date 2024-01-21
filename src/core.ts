@@ -1,5 +1,5 @@
-import { Vector3 } from "@babylonjs/core/Maths/math.vector";
-import { Scene } from "@babylonjs/core/scene";
+import  { Vector3 } from "@babylonjs/core/Maths/math.vector";
+import type { Scene } from "@babylonjs/core/scene";
 import { InstancedMesh, Mesh } from "@babylonjs/core/Meshes/";
 
  
@@ -68,7 +68,6 @@ export class Cloner {
             this._rootNode.setEnabled(enabled);
         }
     }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     createClone(_parent: Mesh) {
         throw new Error("Method not implemented.");
     }
@@ -135,7 +134,7 @@ export class Cloner {
 
 //
 
-interface IEffector {
+export interface IEffector {
     effector: RandomEffector;
     sensitivity: number;
 }

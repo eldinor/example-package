@@ -1,6 +1,6 @@
 import { Cloner, CMesh } from "./core";
 import type { Scene } from "@babylonjs/core/scene";
-import type {Mesh} from "@babylonjs/core/Meshes/";
+import type { Mesh } from "@babylonjs/core/Meshes/";
 import { Vector3 } from "@babylonjs/core/Maths/math.vector";
 
 export class RadialCloner extends Cloner {
@@ -18,7 +18,7 @@ export class RadialCloner extends Cloner {
      *
      * @param mesh mesh to clone
      * @param scene
-     * @param param2 all optional: count, offset, radius, startangle, endangle, useInstances, plane
+     * @param options all optional: count, offset, radius, startangle, endangle, useInstances, plane
      */
     constructor(
         mesh: Array<Mesh>,
@@ -101,14 +101,14 @@ export class RadialCloner extends Cloner {
             );
         }
     }
-    calcRot() {
+    private calcRot() {
         for (let i = 0; i < this._count!; i++) {
             const arange = this._endangle - this._startangle;
             const step = arange / this._count!;
             (this._clones[i].getChildren()[0] as Mesh).rotation.x =
                 (this._clones[i].getChildren()[0] as Mesh).rotation.y =
                 (this._clones[i].getChildren()[0] as Mesh).rotation.z =
-                    0;
+                0;
             if (this._plane.y === 0) {
                 (this._clones[i].getChildren()[0] as Mesh).rotation.y = this
                     ._align
@@ -132,14 +132,14 @@ export class RadialCloner extends Cloner {
             (this._clones[i].getChildren()[0] as Mesh).rotation = vRet;
         }
     }
-    calcSize() {
+    private calcSize() {
         for (let i = 0; i < this._count!; i++) {
             (this._clones[i].getChildren()[0] as Mesh).scaling = this.eScale(
                 Cloner.vOne
             );
         }
     }
-    calcPos() {
+    private calcPos() {
         this.eReset();
         for (let i = 0; i < this._count!; i++) {
             const arange = this._endangle - this._startangle;
@@ -147,7 +147,7 @@ export class RadialCloner extends Cloner {
             this._clones[i].position.x =
                 this._clones[i].position.y =
                 this._clones[i].position.z =
-                    0;
+                0;
             if (this._plane.y === 0) {
                 this._clones[i].position.x =
                     Math.sin(this._offset + this._startangle + i * step) *

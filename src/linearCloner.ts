@@ -211,14 +211,6 @@ export class LinearCloner extends Cloner {
     get count() {
         return this._count;
     }
-    /**
-     * Does some thing in old style.
-     *
-     * @deprecated use iModeRel instead.
-     */
-    set mode(m: any) {
-        this.iModeRel = m == "step";
-    }
 
     set iModeRel(mode: boolean) {
         const newMode = mode;
@@ -284,7 +276,7 @@ export class LinearCloner extends Cloner {
     get root() {
         return this._rootNode;
     }
-    get mesh() {
+    get meshes() {
         return this._mesh;
     }
 }
